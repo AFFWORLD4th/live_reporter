@@ -43,42 +43,59 @@ export default function ConsumerNewsHome() {
 
   return (
     <div style={{ backgroundColor: '#ffffff' }}>
-      {/* Top Bar */}
-      <div className="top-bar">
-        <div className="market-links">
-          <span>Sensex 74,320.30 (+512)</span>
-          <span>Gold Rate ₹{marketData?.commodities?.gold?.toLocaleString() || '72,450'}</span>
-          <span>Petrol Price ₹{marketData?.commodities?.petrol || '104.05'}</span>
-          <span style={{ color: '#555' }}>USD/INR: {marketData?.forex?.usd_inr || '83.5'}</span>
-        </div>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-           <span style={{ fontSize: '0.8rem', color: '#888' }}>Tuesday, April 7, 2026</span>
-           <div className="lang-switch">
-             <span style={{ fontWeight: 700 }}>English</span>
-             <span>Hindi</span>
-             <span>Marathi</span>
-           </div>
+      {/* Running Market Ticker */}
+      <div className="ticker-container">
+        <div className="ticker-track">
+          <div className="ticker-item">
+            <span className="ticker-label">SENSEX</span>
+            <span className="ticker-value">{marketData?.indices?.sensex || '74,320.30'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">NIFTY 50</span>
+            <span className="ticker-value">{marketData?.indices?.nifty || '22,453.30'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">Gold (24K)</span>
+            <span className="ticker-value">₹{marketData?.commodities?.gold?.toLocaleString() || '72,450'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">Silver</span>
+            <span className="ticker-value">₹{marketData?.commodities?.silver?.toLocaleString() || '84,200'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">Brent Crude</span>
+            <span className="ticker-value">${marketData?.commodities?.crude || '84.12'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">Petrol (Nagpur)</span>
+            <span className="ticker-value">₹{marketData?.commodities?.petrol || '104.05'}</span>
+          </div>
+          <div className="ticker-item">
+            <span className="ticker-label">BTC/INR</span>
+            <span className="ticker-value">₹{marketData?.crypto?.bitcoin?.toLocaleString() || '5,500,000'}</span>
+          </div>
+          {/* Duplicate for seamless loop if needed, or track logic */}
         </div>
       </div>
 
       {/* Header Area */}
-      <header style={{ padding: '2rem 4rem', display: 'grid', gridTemplateColumns: 'min-content 1fr min-content', alignItems: 'center', gap: '3rem' }}>
+      <header>
         <div className="branding">
            <img src="/newslogo.png" alt="Good Morning Nagpur" />
         </div>
 
-        <div className="header-center" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', color: '#666' }}>
-              <span>Nagpur, Maharashtra</span>
+        <div className="header-center">
+           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', color: '#666', marginBottom: '8px' }}>
+              <span>Nagpur, MH</span>
               <span>{marketData?.weather?.condition || 'Cloudy'} • {marketData?.weather?.temp || '28'}°C</span>
            </div>
            <div className="header-banner">
-              DAILY EDITION • THE PULSE OF CENTRAL INDIA
+              DAILY EDITION • {new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}
            </div>
         </div>
 
         <div className="header-right">
-           <button className="advertise-btn">ADVERTISE WITH US</button>
+           <button className="advertise-btn">ADVERTISE</button>
         </div>
       </header>
 

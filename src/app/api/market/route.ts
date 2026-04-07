@@ -36,7 +36,16 @@ export async function GET() {
     weather,
     crypto,
     forex,
-    commodities: { gold: 72450, petrol: 104.05 },
+    commodities: { 
+      gold: 72450, 
+      silver: 84200, 
+      petrol: 104.05,
+      crude: 82.14
+    },
+    indices: {
+      sensex: '74,320.30 (+512)',
+      nifty: '22,453.30 (+158.70)'
+    },
     lastUpdated: new Date().toISOString(),
   });
 }
