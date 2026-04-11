@@ -269,6 +269,14 @@ export default function ConsumerNewsHome() {
                   <Share2 size={20} style={{ cursor: 'pointer' }} />
                 </div>
               </div>
+
+              {/* Floating Social Share Bar */}
+              <div className="floating-share">
+                 <div className="share-btn"><SocialIcon type="facebook" /></div>
+                 <div className="share-btn"><SocialIcon type="twitter" /></div>
+                 <div className="share-btn" onClick={() => alert('Link copied!')}><Share2 size={18} /></div>
+              </div>
+
               <h2 style={{ marginTop: '1rem', lineHeight: 1.2, fontSize: '2.5rem', fontWeight: 800 }}>Vidarbha Heatwave Alert: IMD predicts record highs for Nagpur and districts.</h2>
               <div style={{ marginTop: '15px', color: '#efeff4', display: 'flex', gap: '1.5rem', fontSize: '0.85rem' }}>
                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Clock size={14} /> 5 MIN READ</span>
@@ -420,7 +428,22 @@ export default function ConsumerNewsHome() {
             <h2>Market Snapshot</h2>
             <div className="line"></div>
          </div>
-         <div className="market-movers-grid">
+         
+         {/* Live Market Chart Simulation */}
+         <div className="market-chart-container">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', color: '#fff', position: 'relative', zIndex: 2 }}>
+               <div>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 800 }}>NIFTY 50</h4>
+                  <p style={{ color: '#2e7d32', fontWeight: 700 }}>22,453.30 (+1.23%)</p>
+               </div>
+               <div style={{ textAlign: 'right', fontSize: '0.7rem', opacity: 0.6 }}>
+                  LIVE TRADING VIEW • NAGPUR DATA CENTER
+               </div>
+            </div>
+            <div className="chart-line"></div>
+         </div>
+
+         <div className="market-movers-grid" style={{ marginTop: '2rem' }}>
             <div className="market-card">
                <h4 style={{ fontWeight: 800, marginBottom: '1rem', color: '#2e7d32' }}>TOP GAINERS</h4>
                {[
